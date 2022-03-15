@@ -27,5 +27,15 @@ public class OrdersService {
     public Orders getOrder(Long id) {
     	return ordersRepository.findById(id).get();
     }
+    
+    public void deleteOrder(Long id) {
+    	ordersRepository.deleteById(id);
+    }
+    
+    public Orders updateOrders(Long id, Orders order) {
+    	Orders ordDB = ordersRepository.findById(id).get();
+    	ordDB.setOrderName(order.getOrderName());
+    	return ordersRepository.save(ordDB);
+    }
 
 }
